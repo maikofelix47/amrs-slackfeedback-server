@@ -1,4 +1,4 @@
-const slackconfig = require('../config/slackconfig')
+const slackconfig = require('../config/slackconfig.json')
 const rp = require('request-promise');
 
 function getChannelMessages(count, oldest) {
