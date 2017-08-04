@@ -37,7 +37,4 @@ var basePlugin = {
 basePlugin.register.attributes = {
     pkg: require('../package.json'),
     key: true
-        // name: 'myplugin',
-        // version: '1.0.0'
 };
-module.exports = basePlugin;
