@@ -1,5 +1,5 @@
 var WebClient = require('@slack/client').WebClient;
-const slackconfig = require('../config/slackconfig');
+const slackconfig = require('../config/slackconfig.json');
 
 
 function sendUserFeedBack(message) {
