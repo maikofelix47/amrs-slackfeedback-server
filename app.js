@@ -1,14 +1,12 @@
 const Hapi = require('hapi');
-const rp = require('request-promise');
-const WebClient = require('@slack/client').WebClient;
-const Promise = require("bluebird");
+
 const slackconfig = require('./config/slackconfig');
-const slackfeedback = require('./slack-user-feedback');
+const slackfeedback = require('./interfaces/slack-user-feedback');
 
 const server = new Hapi.Server();
 server.connection({
     host: 'localhost',
-    port: 8080,
+    port: 8000,
     routes: {
         json: {
             space: 4
@@ -16,10 +14,9 @@ server.connection({
     }
 });
 
-
-//register routing plugin
+//register routing  plugin
 server.register({
-    register: require('./app-route'),
+    register: require('./route/app-route'),
 
 }, (err) => {
 

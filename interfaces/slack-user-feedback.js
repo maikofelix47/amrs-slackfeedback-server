@@ -1,7 +1,7 @@
-const slackconfig = require('./config/slackconfig')
+const slackconfig = require('../config/slackconfig')
+const rp = require('request-promise');
 
-
-function getChannelMessage(count, oldest) {
+function getChannelMessages(count, oldest) {
     var options = {
         url: 'https://slack.com/api/channels.history',
         qs: {
@@ -21,14 +21,15 @@ function getChannelMessage(count, oldest) {
         rp(options)
             .then(function(data) {
                 resolve(data);
-                console.log(data);
             }).catch(function(err) {
                 reject(err);
             });
-
-
     });
 }
-getChannelMessage(10);
+//getChannelMessages(3,1501770200.477992);
 
-module.exports.getChannelMessage = getChannelMessage;
+var getfeedback = {
+    getChannelMessages: getChannelMessages
+}
+
+module.exports.getfeedback = getfeedback;
