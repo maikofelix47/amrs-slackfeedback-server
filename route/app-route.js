@@ -38,3 +38,4 @@ basePlugin.register.attributes = {
     pkg: require('../package.json'),
     key: true
 };
+module.exports = basePlugin;
