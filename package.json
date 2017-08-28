@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "joy",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@slack/client": "^3.11.0",
+    "good": "^7.2.0",
+    "hapi": "^16.5.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "underscore": "^1.8.3"
+  }
 }
