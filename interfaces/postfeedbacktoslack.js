@@ -14,15 +14,15 @@ function sendUserFeedBack(message) {
                 console.log('Error:', err);
                 resolve({ status: err });
             } else {
-                console.log('Message sent: ', res);
+                console.log('Message sent:' + '' + message);
                 resolve({ status: 'okay' });
             }
         });
 
     });
 }
-        var postfeedback = {
-            sendUserFeedBack: sendUserFeedBack,
-        };
+    var postfeedback = {
+        sendUserFeedBack: sendUserFeedBack,
+    };
 
     module.exports.postfeedback = postfeedback;
