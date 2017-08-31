@@ -1,6 +1,7 @@
+
 const WebClient = require('@slack/client').WebClient;
 const slackconfig = require('../config/slackconfig');
-const rp = require('request-promise');
+const teamMembers = require('./getTeamMembers');
 
 function postToChannel(message, channelname){
     let channelName = channelname
@@ -10,12 +11,12 @@ function postToChannel(message, channelname){
             return new Promise(function(resolve, reject){
             let web = new WebClient(token);
             if(channel){
-                web.chat.postMessage(channel, message, function(err, res) {
+               return web.chat.postMessage(channel, message, function(err, res) {
                     if (err) {
                         console.log('Error:', err);
                         resolve({ status: err });
                     } else {
-                        console.log('Message sent: ', message);
+                        console.log('Message sent:' + '' + message);
                         resolve({ status: 'okay' });
                     }
                 });
@@ -26,25 +27,13 @@ function postToChannel(message, channelname){
    
 }
 
-function  getChannels() {
-    var urlList = 'https://slack.com/api/channels.list?token=' + slackconfig.slack.bottoken + '&pretty=1';
-    return new Promise(function(resolve, reject) {
-        rp(urlList)
-        .then(function(data) {
-            resolve(JSON.parse(data));
-        }).catch(function(err) {
-            reject(err);
-        });
-   });
-}
-
 function getChannelArray(){
    let channelArr = []
-        return Promise.resolve( getChannels().then((data) =>{
+        return Promise.resolve(teamMembers.teamMembers.getChannels().then((data) =>{
         data.channels.forEach((channel) =>{
             channelArr.push(channel);
         });
-         return channelArr;
+        return channelArr;
     }));
    
 }

@@ -5,7 +5,7 @@ const slackconfig = require('../config/slackconfig.json');
 function sendUserFeedBack(message) {
 
     let token = slackconfig.slack.bottoken;
-    let channel = slackconfig.slack.channelID;
+    let channel = slackconfig.slack.groupid;
 
     return new Promise(function (resolve, reject) {
         let web = new WebClient(token);
