@@ -1,8 +1,14 @@
-{
-    "slack": {
-        "clientID": "215421546676.214712833984",
-        "secret": "ba32b4898227df18458a2442568493c8",
-        "bottoken": "xoxp-215421546676-215496017077-222229434690-659e0da651d61a01ef3d93553062cbd2",
-        "channelID": "C6BAPLMDG"
+  
+    {
+        "slack": {
+            "clientID": "",
+            "secret": "",
+            "grouptoken":"",
+            "groupid":"",
+            "groupname":"",
+            "bottoken": "",
+            "channelID": "",
+            "channelname":""
+
+        }
     }
-}
