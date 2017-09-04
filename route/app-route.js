@@ -1,7 +1,7 @@
-const getfeedback = require('../slack-interfaces/get-user-feedback');
+const getfeedback = require('../slack-interfaces/get-poc-feedback');
 const getchannelfeedback = require('../slack-interfaces/get-from-channel');
 const getgroupfeedback = require('../slack-interfaces/get-from-groups');
-const postfeedback = require('../slack-interfaces/postfeedbacktoslack');
+const postfeedback = require('../slack-interfaces/postfeedbacktopoc');
 const postToAChannel = require('../slack-interfaces/posttochannels');
 const postToAGroup = require('../slack-interfaces/posttogroups');
 
@@ -12,9 +12,9 @@ var getChannelMessage = function(req, reply) {
                          encodeURIComponent(urlparts[1]));
                 reply(res); 
                 } 
-var getGroupMessages = function(req, reply) {
+var getPocFeedback = function(req, reply) {
                 const urlparts = req.params.count.split('/');
-                var res = getfeedback.getfeedback.getGroupMessages(encodeURIComponent(urlparts[0]),
+                var res = getfeedback.getfeedback.getPOCFeedback(encodeURIComponent(urlparts[0]),
                          encodeURIComponent(urlparts[1]));
                 reply(res); 
                 }
@@ -32,8 +32,9 @@ var getFromGroup = function(req, reply) {
                 }            
 
 var postSlackFeedback = function (request, reply) {
-                var payload = request.payload.message;
-                postfeedback.postfeedback.sendUserFeedBack(payload).then(function(success) {
+                var payload = request.payload;
+                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
+                postfeedback.postfeedback.sendUserFeedBack(message).then(function(success) {
                     reply(success);
                     console.log('message send' + ' ' + payload);
                 }). catch((err) => {
@@ -41,19 +42,19 @@ var postSlackFeedback = function (request, reply) {
                 });
             }
 var postToChannels = function (request, reply) {
-                var payload = request.payload.message;
+                var payload = request.payload;
                 var channel = request.payload.channel;
-                var res =  postToAChannel.postToAChannel.postToChannel(payload,channel);
+                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`; 
+                var res =  postToAChannel.postToAChannel.postToChannel(message,channel);
                 reply('message sent server'+ ' ' + payload);
-                // reply(res);
                 
             }
 var postToGroup = function (request, reply) {
-                var payload = request.payload.message;
+                var payload = request.payload;
                 var group = request.payload.group;
-                var res =  postToAGroup.postToAGroup.postToGroup(payload,group);
+                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`; 
+                var res =  postToAGroup.postToAGroup.postToGroup(message,group);
                 reply('message sent server to'+group);
-                // reply(res);
                 
             }           
 
@@ -69,7 +70,7 @@ var basePlugin = {
         {
             method: 'GET',
             path: '/group/slackmessages/{count*2}',
-            handler: getGroupMessages
+            handler: getPocFeedback
         },
         {
             method: 'GET',

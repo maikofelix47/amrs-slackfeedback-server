@@ -7,7 +7,9 @@ function postToGroup(message, groupname){
     let groupName = groupname
     let token = slackconfig.slack.grouptoken;
     getGroupArray().then((groups) =>{
+        console.log('groups',groups);
         group =  getGroupID(groups,groupName);
+        console.log('gid',group);
             return new Promise(function(resolve, reject){
             let web = new WebClient(token);
             if(group){
@@ -16,7 +18,7 @@ function postToGroup(message, groupname){
                         console.log('Error:', err);
                         resolve({ status: err });
                     } else {
-                        console.log('Message sent:' + '' + message);
+                        console.log('Message sent:' + ' ' + message);
                         resolve({ status: 'okay' });
                     }
                 });

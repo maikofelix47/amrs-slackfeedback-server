@@ -2,7 +2,6 @@ const Hapi = require('hapi');
 var Good = require('good');
 
 const slackconfig = require('./config/slackconfig');
-const slackfeedback = require('./slack-interfaces/get-user-feedback');
 
 const server = new Hapi.Server();
 server.connection({
