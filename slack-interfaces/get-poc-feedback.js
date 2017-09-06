@@ -2,7 +2,7 @@ const slackconfig = require('../config/slackconfig.json')
 const rp = require('request-promise');
 
 var uri = 'https://slack.com/api/';
-function getGroupMessages(count, oldest) {
+function getPOCFeedback(count, oldest) {
     var options = {
         url: uri+ 'groups.history',
         qs: {
@@ -53,7 +53,7 @@ function getFromChannel(count, oldest) {
 }
 
 var getfeedback = {
-    getGroupMessages:getGroupMessages,
+    getPOCFeedback:getPOCFeedback,
     getFromChannel:getFromChannel
 }
 
