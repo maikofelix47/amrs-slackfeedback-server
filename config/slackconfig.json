@@ -2,8 +2,8 @@
   	"slack": {
   		"clientID": "215421546676.214712833984",
   		"secret": "ba32b4898227df18458a2442568493c8",
-  		"grouptoken": "xoxb-151798491475-yqnGUkTk2Fso5DVjf0Lzkipw",
-  		"groupid": "G4GFP8BPU",
+  		"grouptoken": "",
+  		"groupid": "",
   		"groupname": "poc-user-feedback",
   		"bottoken": "xoxp-215421546676-215496017077-232962929395-e3edf68ede5c34447b12dbbf0493d75f",
   		"channelID": "C6BAPLMDG",

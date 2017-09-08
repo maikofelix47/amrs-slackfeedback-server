@@ -44,7 +44,7 @@ var postSlackFeedback = function (request, reply) {
 var postToChannels = function (request, reply) {
                 var payload = request.payload;
                 var channel = request.payload.channel;
-                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`; 
+                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
                 var res =  postToAChannel.postToAChannel.postToChannel(message,channel);
                 reply('message sent server'+ ' ' + payload);
                 
@@ -52,7 +52,7 @@ var postToChannels = function (request, reply) {
 var postToGroup = function (request, reply) {
                 var payload = request.payload;
                 var group = request.payload.group;
-                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`; 
+                let message =`From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
                 var res =  postToAGroup.postToAGroup.postToGroup(message,group);
                 reply('message sent server to'+group);
                 
