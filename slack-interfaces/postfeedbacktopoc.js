@@ -2,9 +2,9 @@ const WebClient = require('@slack/client').WebClient;
 const slackconfig = require('../config/slackconfig.json');
 
 
-function sendUserFeedBack(message) {
+function postFeedbackToPoc(message) {
 
-    let token = slackconfig.slack.grouptoken;
+    let token = slackconfig.slack.bottoken;
     let channel = slackconfig.slack.groupid;
 
     return new Promise(function (resolve, reject) {
@@ -22,7 +22,7 @@ function sendUserFeedBack(message) {
     });
 }
     var postfeedback = {
-        sendUserFeedBack: sendUserFeedBack,
+        postFeedbackToPoc: postFeedbackToPoc,
     };
 
     module.exports.postfeedback = postfeedback;

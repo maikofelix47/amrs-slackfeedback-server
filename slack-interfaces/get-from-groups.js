@@ -11,7 +11,7 @@ function getFromGroup(groupname, count, oldest) {
         var options = {
             url: 'https://slack.com/api/groups.history',
             qs: {
-                token: slackconfig.slack.grouptoken,
+                token: slackconfig.slack.bottoken,
                 channel: groupId,
                 count: count,
                 oldest: oldest

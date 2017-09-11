@@ -9,7 +9,7 @@ function getFromChannel(channelname, count, oldest) {
         channelId =  getChannelID(channels,channelName);
 
         var options = {
-            url: 'https://slack.com/api/groups.history',
+            url: 'https://slack.com/api/channels.history',
             qs: {
                 token: slackconfig.slack.bottoken,
                 channel: channelId,
