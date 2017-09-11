@@ -2,7 +2,7 @@ const slackconfig = require('../config/slackconfig');
 const rp = require('request-promise');
 
 function  getGroups() {
-    var urlList = 'https://slack.com/api/groups.list?token=' + slackconfig.slack.grouptoken + '&pretty=1';
+    var urlList = 'https://slack.com/api/groups.list?token=' + slackconfig.slack.bottoken + '&pretty=1';
     return new Promise(function(resolve, reject) {
         rp(urlList)
         .then(function(data) {

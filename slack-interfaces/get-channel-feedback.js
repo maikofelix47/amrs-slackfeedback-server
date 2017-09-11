@@ -1,12 +1,12 @@
 const slackconfig = require('../config/slackconfig.json')
 const rp = require('request-promise');
 
-function getPOCFeedback(count, oldest) {
+function getChannelFeedback(count, oldest) {
     var options = {
-        url: 'https://slack.com/api/groups.history',
+        url: 'https://slack.com/api/channels.history',
         qs: {
             token: slackconfig.slack.bottoken,
-            channel: slackconfig.slack.groupid,
+            channel: slackconfig.slack.channelID,
             count: count,
             oldest: oldest
         },
@@ -26,9 +26,8 @@ function getPOCFeedback(count, oldest) {
     });
 }
 
-
-var getpocfeedback = {
-    getPOCFeedback:getPOCFeedback,
+var getfeedback = {
+    getChannelFeedback:getChannelFeedback,
 }
 
-module.exports.getpocfeedback = getpocfeedback;
+module.exports.getfeedback = getfeedback;

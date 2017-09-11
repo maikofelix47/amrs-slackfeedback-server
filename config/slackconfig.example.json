@@ -1,0 +1,12 @@
+{
+  	"slack": {
+  		"clientID": "",
+  		"secret": "",
+  		"bottoken": "",
+  		"groupid": "",
+  		"groupname": "",
+  		"channelID": "",
+  		"channelname": ""
+
+  	}
+}
