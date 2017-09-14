@@ -1,3 +1,2 @@
-slackconfig.json
 node_modules/
-package-lock.json
+config/slackconfig.json
