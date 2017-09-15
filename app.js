@@ -5,8 +5,8 @@ const slackconfig = require('./config/slackconfig');
 
 const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
-    port: 5000,
+    host: slackconfig.slackserver.host,
+    port: slackconfig.slackserver.port,
     routes: {
         json: {
             space: 4

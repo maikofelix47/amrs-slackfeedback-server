@@ -8,5 +8,11 @@
   		"channelID": "",
   		"channelname": ""
 
-  	}
+	  },
+	   "slackserver":{
+        "host":"localhost",
+        "port":5000
+        }
+	
+	
 }
