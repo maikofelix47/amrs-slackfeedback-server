@@ -11,30 +11,30 @@ var getPocFeedback = function(req, reply) {
                 const urlparts = req.params.count.split('/');
                 var res = getpocfeedback.getpocfeedback.getPOCFeedback(encodeURIComponent(urlparts[0]),
                          encodeURIComponent(urlparts[1]));
-                reply(res); 
+                reply(res);
                 }
 var getChannelMessage = function(req, reply) {
                 const urlparts = req.params.count.split('/');
                 var res = getfeedback.getfeedback.getChannelFeedback(encodeURIComponent(urlparts[0]),
                          encodeURIComponent(urlparts[1]));
-                reply(res); 
-                } 
+                reply(res);
+                }
 var getFromChannel = function(req, reply) {
                 const urlparts = req.params.count.split('/');
                 var res = getchannelfeedback.getchannelfeedback.getFromChannel(encodeURIComponent(urlparts[0]),
                          encodeURIComponent(urlparts[1]),encodeURIComponent(urlparts[2]));
-                reply(res); 
-                } 
+                reply(res);
+                }
 var getFromGroup = function(req, reply) {
                 const urlparts = req.params.count.split('/');
                 var res = getgroupfeedback.getgroupfeedback.getFromGroup(encodeURIComponent(urlparts[0]),
                          encodeURIComponent(urlparts[1]),encodeURIComponent(urlparts[2]));
-                reply(res); 
-                }            
+                reply(res);
+                }
 
 var postSlackFeedback = function (request, reply) {
                 var payload = request.payload;
-                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
+                let message = `*From*  ${payload.name} \n *Location:*  ${payload.location} \n *Phone:*  ${payload.phone} \n *Message:* \n \`\`\`${payload.message}\`\`\``;
                 postfeedback.postfeedback.postFeedbackToPoc(message).then(function(success) {
                     reply(success);
                     console.log('message send' + ' ' + payload);
@@ -45,24 +45,32 @@ var postSlackFeedback = function (request, reply) {
 var postToChannels = function (request, reply) {
                 var payload = request.payload;
                 var channel = request.payload.channel;
-                let message = `From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
+                let message = `*From*  ${payload.name} \n *Location:*  ${payload.location} \n *Phone:*  ${payload.phone} \n *Message:* \n \`\`\`${payload.message}\`\`\``;
                 var res =  postToAChannel.postToAChannel.postToChannel(message,channel);
                 reply('message sent server'+ ' ' + payload);
-                
+
             }
 var postToGroup = function (request, reply) {
                 var payload = request.payload;
                 var group = request.payload.group;
-                let message =`From:  ${payload.name} \n Location:  ${payload.location} \n Phone:  ${payload.phone} \n Message: \n ${payload.message}`;
+                let message = `*From*  ${payload.name} \n *Location:*  ${payload.location} \n *Phone:*  ${payload.phone} \n *Message:* \n \`\`\`${payload.message}\`\`\``;
                 var res =  postToAGroup.postToAGroup.postToGroup(message,group);
                 reply('message sent server to'+group);
-                
-            }           
+
+            }
 
 var basePlugin = {
 
     register: function(server, options, next) {
         var routes = [
+        {
+            method: 'GET',
+            path: '/',
+            handler:function (request, reply) {
+
+                return reply('Welcome to Amrs Slack Server');
+            }
+        },
         {
             method: 'GET',
             path: '/channel-slackmessages/{count*2}',
