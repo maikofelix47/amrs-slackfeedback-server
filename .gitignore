@@ -1,3 +1,4 @@
 node_modules/
 config/slackconfig.json
 package-lock.json
+README.md
