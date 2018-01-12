@@ -1,0 +1,9 @@
+{
+    "apps" : [{
+      "name"        : "amrs-slack-service",
+      "script"      : "/opt/amrs-slackfeedback-server/app.js",
+      "watch"       : false,
+      "exec_interpreter" : "babel-node",
+      "exec_mode"        : "fork"
+    }]
+  }
